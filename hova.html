@@ -1,0 +1,183 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>Hova</title>
+    <link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+    <link rel=stylesheet type=text/css href=o2.css>
+    <link rel=stylesheet type=text/css href=custom.css>
+    <link rel=stylesheet type=text/css href=prettify.css>
+  </head>
+
+  <body>
+    <div class='container main-container'>
+      <div class=row align="center">
+        <div class="span2" style="margin-top:30px">
+          <img src="http://golang.org/doc/gopher/gopherbw.png" width="145px" height="140px">
+        </div>
+        <div class=span8>
+          <h1 class=logo>
+            <a class=logo-link>
+              <span class="logo-prefix" style ="font-size:98px;color:#51D570">Hova </span>
+            </a>
+          </h1>
+          <div class="row main-copy">
+            <p style="margin-top:-50px">Micro framework for lightweight Golang web apps.</p>
+          </div>
+        </div>
+        <div class="span2">
+        </div>
+      </div>
+      <div class='row main-copy'>
+        <div class=span12>
+          <p>
+            <i>Hova</i> is a micro framework to quickly create simple web applications in Golang. With a barebone structure, all <i>Hova</i> requires you to do is define routes and point them to views and actions, keeping development quick and easy.
+          </p>
+          <p>
+            <i>Hova</i> does everything for you. Params are readily available in your controller actions, variables are passed back to your views, <i>Hova</i> even handles templating for you! Three simple files, get started below.
+          </p>
+
+        </div>
+      </div>
+
+      <hr>
+
+      <div class='row start-container'>
+        <div class='span8 main-copy quickstart'>
+          <p class=quickstart-text>Get started:</p>
+            
+            <p style="font-size:16px;margin-top:-30px">Pre reqs: Have your $GOPATH set properly.</p>
+            <p style="font-size:16px;margin-top:-5px">1) Clone the repo and compile hova</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+        ➜ git clone https://github.com/coffeejay/hova.git
+        ➜ cd hova_dir
+        ➜ cd hova
+        ➜ go install
+        ➜ cd ../controllers
+        ➜ go install
+        ➜ cd ..
+            </pre>
+            <br>
+
+
+
+            <br>
+            <p style="font-size:16px;margin-top:-20px">2) Open main.go and add a route, match it to a view, & define an action.</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+        package main
+
+        import "hova_dir/hova"
+
+        func main(){
+
+        hova.AddRoute("/","views/index.html","Root")
+        hova.Init()
+
+        }
+            </pre>
+            <br>
+
+
+            <br>
+            <p style="font-size:16px;margin-top:-20px">3) Open controller.go and write the action you just defined in main.go ("Root" in this case). Accept params in the header and return the variables you want available in the corresponding view.</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+        package controller
+
+        type Controller struct{}
+
+        func (c *Controller) Root(params map[string][]string) map[string] string{
+          greeting := "Hello, " + params["name"][0] + "!"
+          return map[string]string{"greeting":greeting} 
+        }
+
+            </pre>
+            <br>
+
+
+            <br>
+            <p style="font-size:16px;margin-top:-20px">4) Ready your view accordingly.</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+          < h1>
+          {{.greeting}}
+          < /h1>
+            </pre>
+            <br>
+            <br>
+            <p style="font-size:16px;margin-top:-20px">5) Go look at http://localhost:9000, you're done!</p>
+
+            <hr>
+          
+            <p class=quickstart-text>For full documentation and all features, keep going!</p>
+            <br>
+            <p style="font-size:16px;margin-top:-20px">Hova's file structure. You must run "go install" in both the hova directory and controllers directory to compile the files (and in order for Hova to work).</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+          hova_dir/
+            main.go
+            views/
+            hova/
+              hova.go
+            conrollers/
+              controller.go
+            </pre>
+            <br>
+
+            <p class=quickstart-text>Let's break down the files:</p>
+            <br>
+            <p style="font-size:16px;margin-top:-20px">main.go</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+          Use Hova.AddRoute(route, view, action string) to give Hova routes.
+          ➜ View names can be relative paths ("views/index.html")
+
+          When you've added all routes, initialize Hova by calling Hova.Init()
+          ➜ Hova will start listening on port 9000.
+            </pre>
+            <br>
+            <p style="font-size:16px;margin-top:-20px">controller.go</p>
+            <br>
+            <pre class='prettyprint linenums lang-js quickstart-code'>
+          Define and write your actions in this file. 
+
+          ➜ Controller actions must take the Controller struct as a recevier.
+          ➜ Accept params as a map[string][]string for access to params 
+          received in the call.
+          ➜ Return any variables in your actions that you want access to
+          in the view in a map[string]string.
+
+          func (c *Controller) SomeFunc(params map[string][]string){
+                name := "roshamboe"
+                return map[string]string{"name":name}
+          }
+
+            </pre>
+            <br>
+
+            <p class=quickstart-text>That's it, it's that simple. Go try it now!</p>
+        </div>
+
+        <div class='span4 download-box'>
+            <div class='row-fluid download'>
+              <p class=download-copy>
+                Get the code on Github
+              </p>
+              <a href=https://github.com/coffeejay/hova class='btn gray'>Download</a>
+            </div>
+            <br>
+        </div>
+      </div>
+
+      <hr>
+        <p style="float:right">Any questions? Contact me <a style="color:#428bca" href="http://twitter.com/roshamboe"> @roshamboe </a> </p>
+        <p style="float:left">© 2013 roshamboe </p>
+      <br>
+      <br>
+      <br>
+     
+  </body>
+</html>

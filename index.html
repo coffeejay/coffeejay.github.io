@@ -37,13 +37,16 @@
       </div>
     </div>
 
+    <script src="https://www.youtube.com/player_api"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://www.youtube.com/player_api"></script>
 
     <script type="text/javascript">
+
+        var song_queue = [];
+
         var tag = document.createElement('script');
 
         tag.src = "https://www.youtube.com/iframe_api";
@@ -51,6 +54,7 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var player;
+
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('player', {
               height: '390',
@@ -58,8 +62,7 @@
               videoId: '',
               playerVars: {
                   'autoplay': 1,
-                  'controls': 1,
-                  'html5': 1
+                  'controls': 1
               },
               events: {
                   'onReady': onPlayerReady,
@@ -87,10 +90,6 @@
           }
 
         
-      $(document).ready(function(){
-
-        var song_queue = [];
-
         $('#searchbar').keyup(function(e){
           if (e.keyCode == 13) {
             $('#searchresults').empty();
@@ -107,6 +106,10 @@
                 $('#queue_table tbody').append('<tr><td>' + $(this).next().html() + '</td></tr>');
 
                 // first song being added to queue 
+
+                if (song_queue.length == 1) {
+                  player.loadVideoById(song_queue[0], 0, "default");
+                };
 
               });
 

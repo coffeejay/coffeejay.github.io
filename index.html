@@ -78,6 +78,71 @@
           writing-mode: lr-tb;
           zoom: 1;
       }
+
+      .skip-button{
+          -webkit-appearance: none;
+          -webkit-user-drag: none;
+          -webkit-user-select: none;
+          -webkit-writing-mode: horizontal-tb;
+          align-items: flex-start;
+          background-color: #6FA8D7;
+          border-bottom-color: rgba(0, 0, 0, 0);
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
+          border-bottom-style: none;
+          border-bottom-width: 0px;
+          border-image-outset: 0px;
+          border-image-repeat: stretch;
+          border-image-slice: 100%;
+          border-image-source: none;
+          border-image-width: 1;
+          border-left-color: rgba(0, 0, 0, 0);
+          border-left-style: none;
+          border-left-width: 0px;
+          border-right-color: rgba(0, 0, 0, 0);
+          border-right-style: none;
+          border-right-width: 0px;
+          border-top-color: rgba(0, 0, 0, 0);
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+          border-top-style: none;
+          border-top-width: 0px;
+          box-sizing: border-box;
+          color: #fff;
+          cursor: pointer;
+          display: inline-block;
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: 12px;
+          font-stretch: normal;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: 100;
+          float:right;
+          height: 20px;
+          letter-spacing: 0.159999996423721px;
+          line-height: normal;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-x: visible;
+          overflow-y: visible;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 4px;
+          text-align: center;
+          text-decoration: none;
+          text-indent: 0px;
+          text-rendering: auto;
+          text-shadow: none;
+          text-transform: none;
+          vertical-align: middle;
+          white-space: nowrap;
+          word-spacing: 0px;
+          writing-mode: lr-tb;
+          zoom: 1;
+      }
     </style>
 
 
@@ -103,7 +168,7 @@
         <table class="table table-bordered table-striped" style="width:640px" id="queue_table">
           <thead>
             <tr>
-              <th><span style="margin-top:10px">Queue</span> <button id="skip" disabled style="float:right;font-size: 12px;padding-top:4px;height: 20px;" class="pure-button random">Skip</button></th>
+              <th><span style="margin-top:10px">Queue</span> <button id="skip" disabled style="float:right;font-size: 12px;padding-top:4px;height: 20px;" class="skip-button">Skip</button></th>
             </tr>
           </thead>
           <tbody>

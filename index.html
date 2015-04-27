@@ -12,16 +12,91 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <style type="text/css">
+      .pure-button{
+          -webkit-appearance: none;
+          -webkit-user-drag: none;
+          -webkit-user-select: none;
+          -webkit-writing-mode: horizontal-tb;
+          align-items: flex-start;
+          background-color: #6FA8D7;
+          border-bottom-color: rgba(0, 0, 0, 0);
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
+          border-bottom-style: none;
+          border-bottom-width: 0px;
+          border-image-outset: 0px;
+          border-image-repeat: stretch;
+          border-image-slice: 100%;
+          border-image-source: none;
+          border-image-width: 1;
+          border-left-color: rgba(0, 0, 0, 0);
+          border-left-style: none;
+          border-left-width: 0px;
+          border-right-color: rgba(0, 0, 0, 0);
+          border-right-style: none;
+          border-right-width: 0px;
+          border-top-color: rgba(0, 0, 0, 0);
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+          border-top-style: none;
+          border-top-width: 0px;
+          box-sizing: border-box;
+          color: #fff;
+          cursor: pointer;
+          display: inline-block;
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: 16px;
+          font-stretch: normal;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: 100;
+          height: 34px;
+          letter-spacing: 0.159999996423721px;
+          line-height: normal;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-x: visible;
+          overflow-y: visible;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          text-align: center;
+          text-decoration: none;
+          text-indent: 0px;
+          text-rendering: auto;
+          text-shadow: none;
+          text-transform: none;
+          vertical-align: middle;
+          white-space: nowrap;
+          word-spacing: 0px;
+          writing-mode: lr-tb;
+          zoom: 1;
+      }
+    </style>
+
 
   </head>
   <body>
+    <div class="container">
+      <div class="col-md-5">
+          <h3><span style="margin-top:10px" class="glyphicon glyphicon-music" ></span> playthisone<span style="color:#6FA8D7">next</span> <small> (disposable playlists)</small> </h3>
+      </div>
+      <div class="col-md-7" align="right" style="margin-top:40px">
+        <a href="#" > What is this? </a>
+      </div>
+    </div>
     <div class="container" style="margin-top:40px">
-      <div class="col-md-4">
-        <input type="text" id="searchbar" class="form-control" placeholder="Search">
+      <div class="col-md-5">
+        <input type="text" id="searchbar" class="form-control" placeholder="Search" style="border-radius:2px">
         <br/>
         <div id="searchresults" style="max-height:600px;overflow:scroll"></div>
       </div>
-      <div class="col-md-1"></div>
       <div class="col-md-7">
         <div id="player"></div>
         <br/><br/>
@@ -40,6 +115,7 @@
     <script src="https://www.youtube.com/player_api"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
@@ -58,7 +134,7 @@
 
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('player', {
-              height: '390',
+              height: '300',
               width: '640',
               videoId: '',
               playerVars: {
@@ -96,16 +172,16 @@
           if (e.keyCode == 13) {
             $('#searchresults').empty();
             var q = $('#searchbar').val().trim();
-            var url = "https://www.googleapis.com/youtube/v3/search?q=" + q + "&part=id,snippet&key=AIzaSyAHhXgPoNBx8LGoMCMsdnZEUBq--HVwlnU&type=video&videoEmbeddable=true"
+            var url = "https://www.googleapis.com/youtube/v3/search?q=" + q + "&part=id,snippet&key=AIzaSyAHhXgPoNBx8LGoMCMsdnZEUBq--HVwlnU&type=video&videoEmbeddable=true&maxResults=10"
 
             $.getJSON(url, function(json){
               json.items.forEach(function (item, count) {
-                $('#searchresults').append('<img style="width:200px;height:150px" src="' + item.snippet.thumbnails.high.url + '"/>' + '<button class="btn btn-default" style="margin-left:10px" id="' + item.id.videoId + '"> Add </button> <p>' + item.snippet.title + '</p><br/>');
+                $('#searchresults').append('<div class="container" style="margin-left:-30px"><div class="col-sm-2"><img style="width:170px;height:120px" class="img-rounded" src="' + item.snippet.thumbnails.high.url + '"/></div><div class="col-sm-4" style="margin-left:-10px"><h5>' + item.snippet.title + '</h5><br/><button class="pure-button" style="margin-left:10px" id="' + item.id.videoId + '"><span  class="glyphicon glyphicon-plus" ></span> Add </button></div></div><br/>');
               });
 
-              $('.btn.btn-default').click(function(e){
+              $('.pure-button').click(function(e){
                 song_queue.push($(this).attr('id'));
-                $('#queue_table tbody').append('<tr><td>' + $(this).next().html() + '</td></tr>');
+                $('#queue_table tbody').append('<tr><td>' + $(this).prev().html() + '</td></tr>');
 
                 // first song being added to queue 
 
@@ -118,6 +194,34 @@
           }
         });
 
+    
+    var suggestCallBack; // global var for autocomplete jsonp
+
+$(document).ready(function () {
+    $("#searchbar").autocomplete({
+        source: function(request, response) {
+            $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
+                {
+                  "hl":"en", // Language
+                  "ds":"yt", // Restrict lookup to youtube
+                  "jsonp":"suggestCallBack", // jsonp callback function name
+                  "q":request.term, // query term
+                  "client":"youtube" // force youtube style response, i.e. jsonp
+                }
+            );
+            suggestCallBack = function (data) {
+                var suggestions = [];
+                $.each(data[1], function(key, val) {
+                    suggestions.push({"value":val[0]});
+                });
+                suggestions.length = 5; // prune suggestions list to only 5 items
+                response(suggestions);
+            };
+        },
+    });
+});
+
+    
     </script>
    
   </body>

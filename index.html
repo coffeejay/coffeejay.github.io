@@ -160,7 +160,7 @@
       <div class="col-md-5">
         <input type="text" id="searchbar" class="form-control" placeholder="Search" style="border-radius:2px">
         <br/>
-        <div id="searchresults" style="max-height:600px;overflow:scroll"></div>
+        <div id="searchresults" style="max-height:600px;overflow-x:hidden;overflow-y:scroll;max-width:445px"></div>
       </div>
       <div class="col-md-7">
         <div id="player"></div>
@@ -227,8 +227,14 @@
           function onPlayerStateChange(event) {
               if (event.data == YT.PlayerState.ENDED) {
                   var index = song_queue.indexOf(current_song);
-                  player.loadVideoById(song_queue[index+1], 0, "default");
-                  current_song = song_queue[index+1];
+                  if (index != song_queue.length - 1) {
+                    player.loadVideoById(song_queue[index+1], 0, "default");
+                    current_song = song_queue[index+1];
+                  }
+                  else
+                  {
+                    alert('playlist over!');
+                  }
               }
           }
 
@@ -241,7 +247,7 @@
 
             $.getJSON(url, function(json){
               json.items.forEach(function (item, count) {
-                $('#searchresults').append('<div class="container" style="margin-left:-30px"><div class="col-sm-2"><img style="width:170px;height:120px" class="img-rounded" src="' + item.snippet.thumbnails.high.url + '"/></div><div class="col-sm-4" style="margin-left:-10px"><h5>' + item.snippet.title + '</h5><button class="pure-button" style="margin-left:10px" id="' + item.id.videoId + '"><span  class="glyphicon glyphicon-plus" ></span> Add </button></div></div><br/>');
+                $('#searchresults').append('<div class="container" style="margin-left:-30px"><div class="col-sm-2"><img style="width:170px;height:120px" class="img-rounded" src="' + item.snippet.thumbnails.high.url + '"/></div><div class="col-sm-4" style="margin-left:-10px"><p style="word-wrap:break-word"><h5>' + item.snippet.title + '</h5></p><button class="pure-button" style="margin-left:10px" id="' + item.id.videoId + '"><span  class="glyphicon glyphicon-plus" ></span> Add </button></div></div><br/>');
               });
 
               $('.pure-button').click(function(e){
@@ -261,9 +267,12 @@
         });
 
     $('#skip').click(function(){
+
       var index = song_queue.indexOf(current_song);
-      player.loadVideoById(song_queue[index+1], 0, "default");
-      current_song = song_queue[index+1];
+      if (index != song_queue.length- 1 ) {
+        player.loadVideoById(song_queue[index+1], 0, "default");
+        current_song = song_queue[index+1];
+      }
     });
 
     

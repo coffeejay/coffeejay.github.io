@@ -46,6 +46,7 @@
     <script type="text/javascript">
 
         var song_queue = [];
+        var current_song;
 
         var tag = document.createElement('script');
 
@@ -109,17 +110,14 @@
 
                 if (song_queue.length == 1) {
                   player.loadVideoById(song_queue[0], 0, "default");
-                };
-
+                }
+                else{
+                  player.cueVideoById($(this).attr('id'), 0, "default");
+                }
               });
-
-            //changing the video logic 
-
             });
-
-        }
-
-      });
+          }
+        });
 
     </script>
    

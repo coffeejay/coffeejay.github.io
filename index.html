@@ -263,15 +263,6 @@
                   var index = song_queue.indexOf(song_to_remove);
                   song_queue.splice(index,1);
                   console.log(song_queue);
-
-                    $('#skip').click(function(){
-                      var index = song_queue.indexOf(current_song);
-                      if (index != song_queue.length- 1 ) {
-                        player.loadVideoById(song_queue[index+1], 0, "default");
-                        current_song = song_queue[index+1];
-                        console.log(song_queue);
-                      }
-                    });
                 });
                 //delete song from queue action end 
 

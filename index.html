@@ -196,6 +196,7 @@
         });
 
     $('#skip').click(function(){
+      console.log(current_song);
       var index = song_queue.indexOf(current_song);
       player.loadVideoById(song_queue[index+1], 0, "default");
       current_song = song_queue[index+1];

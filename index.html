@@ -85,8 +85,9 @@
           //    the player should play for six seconds and then stop.
           function onPlayerStateChange(event) {
               if (event.data == YT.PlayerState.ENDED) {
-                  
-
+                  var index = song_queue.indexOf(current_song);
+                  player.loadVideoById(song_queue[index+1], 0, "default");
+                  current_song = song_queue[index+1];
               }
           }
 
@@ -110,9 +111,7 @@
 
                 if (song_queue.length == 1) {
                   player.loadVideoById(song_queue[0], 0, "default");
-                }
-                else{
-                  player.cueVideoById($(this).attr('id'), 0, "default");
+                  current_song = song_queue[0];
                 }
               });
             });

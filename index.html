@@ -253,6 +253,7 @@
               $('.pure-button').click(function(e){
                 song_queue.push($(this).attr('id'));
                 $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '<span  class="glyphicon glyphicon-remove" style="float:right;margin-right:5px;margin-top:3px" ></span></td></tr>');
+                console.log(song_queue);
 
                 //delete song from queue action 
                 $('.glyphicon.glyphicon-remove').click(function(){
@@ -261,12 +262,14 @@
                   $(row).remove();
                   var index = song_queue.indexOf(song_to_remove);
                   song_queue.splice(index,1);
+                  console.log(song_queue);
 
                     $('#skip').click(function(){
                       var index = song_queue.indexOf(current_song);
                       if (index != song_queue.length- 1 ) {
                         player.loadVideoById(song_queue[index+1], 0, "default");
                         current_song = song_queue[index+1];
+                        console.log(song_queue);
                       }
                     });
                 });
@@ -290,6 +293,7 @@
       if (index != song_queue.length- 1 ) {
         player.loadVideoById(song_queue[index+1], 0, "default");
         current_song = song_queue[index+1];
+        console.log(song_queue);
       }
     });
 

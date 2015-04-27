@@ -252,19 +252,9 @@
               //add to playlist action
               $('.pure-button').click(function(e){
                 song_queue.push($(this).attr('id'));
-                $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '<span  class="glyphicon glyphicon-remove" style="float:right;margin-right:5px;margin-top:3px" ></span></td></tr>');
+                $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '</td></tr>');
                 console.log(song_queue);
 
-                //delete song from queue action 
-                $('.glyphicon.glyphicon-remove').click(function(){
-                  var row = $($(this).parent()).parent();
-                  var song_to_remove = $(row).attr("id");
-                  $(row).remove();
-                  var index = song_queue.indexOf(song_to_remove);
-                  song_queue.splice(index,1);
-                  console.log(song_queue);
-                });
-                //delete song from queue action end 
 
                 // first song being added to queue 
 
@@ -273,6 +263,7 @@
                   current_song = song_queue[0];
                   $('#skip').prop('disabled', false);
                 }
+
               });
               //add to playlist action end 
             });

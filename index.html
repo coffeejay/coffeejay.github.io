@@ -188,6 +188,7 @@
                 if (song_queue.length == 1) {
                   player.loadVideoById(song_queue[0], 0, "default");
                   current_song = song_queue[0];
+                  $('#skip').prop('disabled', false);
                 }
               });
             });

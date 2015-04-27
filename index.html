@@ -217,7 +217,6 @@
           // 4. The API will call this function when the video player is ready.
           function onPlayerReady(event) {
               playerReady = true;
-              console.log("ready to play");
           }
 
 
@@ -252,7 +251,7 @@
 
               $('.pure-button').click(function(e){
                 song_queue.push($(this).attr('id'));
-                $('#queue_table tbody').append('<tr><td>' + $(this).prev().html() + '</td></tr>');
+                $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '<a  class="glyphicon glyphicon-remove" style="float:right;margin-right:5px;margin-top:3px" ></a></td></tr>');
 
                 // first song being added to queue 
 
@@ -267,12 +266,19 @@
         });
 
     $('#skip').click(function(){
-
       var index = song_queue.indexOf(current_song);
       if (index != song_queue.length- 1 ) {
         player.loadVideoById(song_queue[index+1], 0, "default");
         current_song = song_queue[index+1];
       }
+    });
+
+    $('.glyphicon.glyphicon-remove').click(function(){
+      var row = $($(this).parent()).parent();
+      var song_to_remove = $(row).attr("id");
+      $(row).remove();
+      var index = song_queue.indexOf(song_to_remove);
+      song_queue.splice(index,1);
     });
 
     

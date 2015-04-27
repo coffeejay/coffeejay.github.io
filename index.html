@@ -246,12 +246,23 @@
 
             $.getJSON(url, function(json){
               json.items.forEach(function (item, count) {
-                $('#searchresults').append('<div class="container" style="margin-left:-30px"><div class="col-sm-2"><img style="width:170px;height:120px" class="img-rounded" src="' + item.snippet.thumbnails.high.url + '"/></div><div class="col-sm-4" style="margin-left:-10px"><h5>' + item.snippet.title + '</h5><button class="pure-button" style="margin-left:10px" id="' + item.id.videoId + '"><span  class="glyphicon glyphicon-plus" ></span> Add </button></div></div><br/>');
+                $('#searchresults').append('<div class="container" style="margin-left:-30px"><div class="col-sm-2"><img style="width:170px;height:120px" class="img-rounded" src="' + item.snippet.thumbnails.high.url + '"/></div><div class="col-sm-4" style="margin-left:-10px"><h5>' + item.snippet.title + '</h5><button class="pure-button" style="margin-left:10px" id="' + item.id.videoId + '"><span class="glyphicon glyphicon-plus" ></span> Add </button></div></div><br/>');
               });
 
+              //add to playlist action
               $('.pure-button').click(function(e){
                 song_queue.push($(this).attr('id'));
-                $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '<a  class="glyphicon glyphicon-remove" style="float:right;margin-right:5px;margin-top:3px" ></a></td></tr>');
+                $('#queue_table tbody').append('<tr id="' + $(this).attr('id') + '"><td>' + $(this).prev().html() + '<span  class="glyphicon glyphicon-remove" style="float:right;margin-right:5px;margin-top:3px" ></span></td></tr>');
+
+                //delete song from queue action 
+                $('.glyphicon.glyphicon-remove').click(function(){
+                  var row = $($(this).parent()).parent();
+                  var song_to_remove = $(row).attr("id");
+                  $(row).remove();
+                  var index = song_queue.indexOf(song_to_remove);
+                  song_queue.splice(index,1);
+                });
+                //delete song from queue action end 
 
                 // first song being added to queue 
 
@@ -261,6 +272,7 @@
                   $('#skip').prop('disabled', false);
                 }
               });
+              //add to playlist action end 
             });
           }
         });
@@ -271,14 +283,6 @@
         player.loadVideoById(song_queue[index+1], 0, "default");
         current_song = song_queue[index+1];
       }
-    });
-
-    $('.glyphicon.glyphicon-remove').click(function(){
-      var row = $($(this).parent()).parent();
-      var song_to_remove = $(row).attr("id");
-      $(row).remove();
-      var index = song_queue.indexOf(song_to_remove);
-      song_queue.splice(index,1);
     });
 
     

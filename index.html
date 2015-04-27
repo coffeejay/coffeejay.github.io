@@ -242,7 +242,7 @@
           if (e.keyCode == 13) {
             $('#searchresults').empty();
             var q = $('#searchbar').val().trim();
-            var url = "https://www.googleapis.com/youtube/v3/search?q=" + q + "&part=id,snippet&key=AIzaSyAHhXgPoNBx8LGoMCMsdnZEUBq--HVwlnU&type=video&videoEmbeddable=true&maxResults=10"
+            var url = "https://www.googleapis.com/youtube/v3/search?q=" + q + "&part=id,snippet&key=AIzaSyAHhXgPoNBx8LGoMCMsdnZEUBq--HVwlnU&type=video&videoEmbeddable=true&maxResults=25"
 
             $.getJSON(url, function(json){
               json.items.forEach(function (item, count) {

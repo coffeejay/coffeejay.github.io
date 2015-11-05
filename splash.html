@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SeedFeed</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('.branding .main').velocity("transition.fadeIn");
+
+        var loadingSequence = []
+
+        $('.listing').velocity("transition.slideLeftIn", { duration: 500, stagger: 150 });
+    });
+  </script>
+
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Muli:400,300,300italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>  
+  <style>
+    
+    html, body {
+      height: 100%;
+    }
+    
+    .pure-g > div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .max-height {
+      min-height: 100%;
+    }
+
+    .sidebar {
+        background: linear-gradient(#2C292F, #3C3842);
+        border-right: 1px solid #292929;
+        color: #ffffff;
+    }
+
+    .branding {
+        margin: 2em 0;
+        text-align: center;
+    }
+
+    .branding .sub {
+        display: block;
+        position: relative;
+        right: 1em;
+        color: #a3a3a3;
+        font-family: "Courgette", serif;
+    }
+
+    .branding .main{
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        color: #fff;
+        margin-top: 0;
+        padding: 0.5em 0.8em;
+        text-transform: uppercase;
+    }
+
+    .content {
+        background: #EEF2F6;
+        border-right: 1px solid #ffffff;
+    }
+
+    .heading {
+        font-family: "Playfair Display", sans-serif;
+        font-size: 2em;
+        color: #000000;
+        margin-top: 3em;
+        margin-left: 1em;
+    }
+
+    .listings {
+        padding: 1em;
+    }
+
+    .listing {
+        min-height: 15em;
+        background: #ffffff;
+        border-radius: 5px;
+        -webkit-box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        -moz-box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        border: 1px solid #BFBFBF;
+        margin-right: 1em;
+        margin-bottom: 1em;
+    }
+
+    .listing .title {
+        text-align: center;
+        margin: 1em 0;
+        font-size: 1.3em;
+        color: #322F36;
+        font-family: Lato, sans-serif;
+        font-weight: 300;
+    }
+
+    .listing .image {
+        background: black;
+        min-height: 8em;
+        position: relative;
+    }
+
+    .listing .more-info-container {
+        margin-top: 1em;
+    }
+
+    .listing .more-info-container > div {
+        text-align: center;
+        font-size: 1.2em;
+        color: #848484;
+    }
+
+    .listing .more-info-container > div i {
+        display: block;
+    }
+
+    .listing .more-info-container > div .icon {
+        font-size: 0.8em;
+        display: block
+    }
+
+    .listing .more-info-container > div .sub {
+        font-size: 0.1em;
+        font-family: Lato;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        bottom: 5px;
+        color: #fff;
+    }
+
+    .progress {
+        color: #FFFFFF;
+        font-family: Lato, sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 0.8em;
+        text-align: center;
+        padding-top: 6.5em;
+    }
+
+    .loading-outer {
+        width: 80%;
+        font-size: 0.5em;
+        background: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 10px;
+        margin-left: 10%;
+        border-radius: 100px;
+    }
+
+    .loading-inner {
+        background:#7061EC;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        border-bottom-right-radius: 100px;
+
+    }
+    .hero{
+        height:200px;
+    }
+    #cover{
+        border-radius: 5px;
+    }
+    .module {
+      background: 
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.2)
+        ),
+        url(http://www.edgewoodpizzao4w.com/wp-content/uploads/2013/06/atlanta-georgia-usa-world_130834.jpg);
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+    }
+    .stats{
+        background-image:
+        linear-gradient(
+          to top right, 
+          #1E2F49, #145678
+        );
+        text-align: center;
+    }
+    .module > header {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 10px;
+    }
+    .module > header > h1 {
+      margin: 0;
+      color: white;
+      text-shadow: 0 1px 0 black;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    .title {
+        color:#fff;
+        text-shadow: 0 1px 0 black;
+        margin-top: 190px;
+        padding: 10px;
+        font-family: sans-serif;
+        font-weight: 300;
+    }
+    .subtitle {
+        color:#CAC5C5;
+        text-shadow: 0 1px 0 black;
+        margin-top: -40px;
+        padding: 20px;
+        font-family: sans-serif;
+        font-weight: 300;
+    }
+    .subtitle2 {
+        color:#CAC5C5;
+        text-shadow: 0 1px 0 black;
+        padding: 20px;
+        font-family: sans-serif;
+        font-weight: 300;
+    }
+    .meter { 
+    height: 20px;  /* Can be anything */
+    position: relative;
+    background: #555;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    }
+    .meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43,194,83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43,194,83) 37%,
+    rgb(84,240,84) 69%
+  );
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.8);
+  position: relative;
+  overflow: hidden;
+}
+.meter > span:after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-image: linear-gradient(
+    -45deg, 
+    rgba(255, 255, 255, .2) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255, 255, 255, .2) 50%, 
+    rgba(255, 255, 255, .2) 75%, 
+    transparent 75%, 
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 2s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+progress {
+        color: #FFFFFF;
+        font-family: Lato, sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 0.8em;
+        text-align: center;
+        padding-top: 6.5em;
+    }
+
+    .loading-outer {
+        width: 80%;
+        font-size: 0.5em;
+        background: rgba(93, 93, 93, 0.8);
+        position: absolute;
+        bottom: 10px;
+        margin-left: 3%;
+        border-radius: 100px;
+    }
+
+    .loading-inner {
+        background:#7061EC;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        border-bottom-right-radius: 100px;
+
+    }
+    .listings {
+        padding: 1em;
+    }
+
+    .listing {
+        min-height: 15em;
+        background: #ffffff;
+        border-radius: 5px;
+        -webkit-box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        -moz-box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.1);
+        border: 1px solid #BFBFBF;
+        margin-right: 1em;
+        margin-bottom: 1em;
+    }
+
+    .listing .title {
+        text-align: center;
+        margin: 0.5em 0;
+        font-size: 1.3em;
+        color: #322F36;
+        font-family: Lato, sans-serif;
+        font-weight: 300;
+    }
+
+    .listing .image {
+        background: black;
+        min-height: 8em;
+        position: relative;
+    }
+
+    .listing .more-info-container {
+        margin-top: 1em;
+    }
+
+    .listing .more-info-container > div {
+        text-align: center;
+        font-size: 1.2em;
+        color: #848484;
+    }
+
+    .listing .more-info-container > div i {
+        display: block;
+    }
+
+    .listing .more-info-container > div .icon {
+        font-size: 0.8em;
+        display: block
+    }
+
+    .listing .more-info-container > div .sub {
+        font-size: 0.1em;
+        font-family: Lato;
+        text-transform: uppercase;
+        font-weight: 700;
+        position: relative;
+        bottom: 5px;
+        color: #636363;
+    }
+
+    hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #BFBFBF;
+    margin: 1em 0;
+    padding: 0; 
+    }
+
+    .navbar{
+    	background-color:#000;
+    }
+
+    .module {
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+    }
+
+
+
+.progress-wrap{
+  height: 50px + $12*2.5;
+  margin-top: 200px;
+  
+}
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.steps {
+  background-color: #fff;
+  border-color: #cad5df;
+  border-style: solid;
+  border-width: 1px 0;
+  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
+  display: block;
+  height: 10px;
+  list-style-type: none;
+  margin: 0 0 30px;
+  padding: 0;
+  width: 100%;
+}
+
+.steps > li {
+  float: left;
+  margin: 0;
+  min-height: 1px;
+  padding: 0;
+  position: relative;
+}
+
+.two.steps > li {
+  width: 100%;
+}
+
+.three.steps > li {
+  width: 50%;
+}
+
+.four.steps > li {
+  width: 33.33333%;
+}
+
+.five.steps > li {
+  width: 25%;
+}
+
+.six.steps > li {
+  width: 20%;
+}
+
+.seven.steps > li {
+  width: 16.66667%;
+}
+
+.eight.steps > li {
+  width: 14.28571%;
+}
+
+.nine.steps > li {
+  width: 12.5%;
+}
+
+.ten.steps > li {
+  width: 11.11111%;
+}
+
+.steps > li:first-child {
+  width: 0;
+}
+
+.steps > li > a {
+  background-color: #fff;
+  border: 1px solid #cad5df;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
+  color: #b2b9bf;
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  height: 30px;
+  right: -10px;
+  line-height: 28px;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: -11px;
+  width: 30px;
+}
+
+.steps > li > a:hover {
+  background-color: #eee;
+  background-image: linear, to bottom, #eeeeee, #dddddd;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  color: #777b80;
+}
+
+.steps > li > a:before,
+.steps > li > a:after {
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
+  content: "";
+  display: block;
+  height: 6px;
+  height: 8px;
+  position: absolute;
+  top: 7px;
+  top: 10px;
+  width: 4px;
+}
+
+.steps > li > a:before {
+  left: -2px;
+}
+
+.steps > li > a:after {
+  right: -2px;
+}
+
+.steps > li > a:hover:before {
+  left: -5px;
+}
+
+.steps > li > a:hover:after {
+  right: -5px;
+}
+
+.steps > li:first-child > a:before {
+  display: none;
+}
+
+.steps > li:last-child > a:after {
+  display: none;
+}
+
+.steps > .complete > a,
+.steps > .complete > a:hover {
+  background-color: #339aff;
+  background-image: linear, to bottom, #339aff, #2894ff;
+  border-color: #1a80e5;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  color: #fff;
+}
+
+.steps > .complete > a:before,
+.steps > .complete > a:after {
+  display: none;
+}
+
+.steps > .complete + .complete:before {
+  background-color: #339aff;
+  background-image: linear, to bottom, #339aff, #2894ff;
+  border-color: #1a80e5;
+  border-style: solid;
+  border-width: 1px 0;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  content: "";
+  height: 10px;
+  position: absolute;
+  left: 8px;
+  top: -1px;
+  width: calc(100% - 26px);
+  z-index: 2;
+}
+
+
+#graph {
+  overflow: hidden;
+  position: relative;
+}
+
+svg {
+  display: inherit;
+  width: 101%;
+  height: 101%;
+}
+
+svg polyline {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  -webkit-animation: dash 2.5s linear forwards;
+  animation: dash 3s linear forwards;
+}
+@-webkit-keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.wht0, .wht2, .wht3, .wht4, .wht1, .wht5 {
+  -webkit-transform-origin: 50%;
+  -moz-transform-origin: 50%;
+  -ms-transform-origin: 50%;
+  -o-transform-origin: 50%;
+  transform-origin: 50%;
+  -moz-transform-origin: 0px 0px 0px;
+  opacity: 0;
+  -webkit-animation: grow 0.5s ease-out forwards;
+  -moz-animation: grow 0.5s ease-out forwards;
+  animation: grow 0.5s ease-out forwards;
+}
+
+.wht0 {
+      -webkit-animation-delay: 0.45s; 
+    animation-delay: 0.45s;
+}
+
+.wht1 {
+      -webkit-animation-delay: 0.65s; 
+    animation-delay: 0.65s;
+}
+
+.wht2 {
+      -webkit-animation-delay: 0.99s; 
+    animation-delay: 0.99s;
+}
+
+.wht3 {
+      -webkit-animation-delay: 1.32s; 
+    animation-delay: 1.32s;
+}
+
+.wht4 {
+      -webkit-animation-delay: 1.69s; 
+    animation-delay: 1.69s;
+}
+
+.wht5 {
+      -webkit-animation-delay: 2.1s; 
+    animation-delay: 2.1s;
+}
+
+@-webkit-keyframes grow {
+0% {
+-webkit-transform: scale(0.3); }
+30% {
+-webkit-transform: scale(1.2); }
+60% {
+-webkit-transform: scale(0.9); }
+100% {
+-webkit-transform: scale(1);
+opacity: 1; } }
+@-moz-keyframes grow {
+0% {
+-moz-transform: scale(0.3); }
+30% {
+-moz-transform: scale(1.2); }
+60% {
+-moz-transform: scale(0.9); }
+100% {
+-moz-transform: scale(1);
+opacity: 1; } }
+@keyframes grow {
+0% {
+-webkit-transform: scale(0.3);
+-moz-transform: scale(0.3);
+-ms-transform: scale(0.3);
+-o-transform: scale(0.3);
+transform: scale(0.3); }
+30% {
+-webkit-transform: scale(1.2);
+-moz-transform: scale(1.2);
+-ms-transform: scale(1.2);
+-o-transform: scale(1.2);
+transform: scale(1.2); }
+60% {
+-webkit-transform: scale(0.9);
+-moz-transform: scale(0.9);
+-ms-transform: scale(0.9);
+-o-transform: scale(0.9);
+transform: scale(0.9); }
+100% {
+-webkit-transform: scale(1);
+-moz-transform: scale(1);
+-ms-transform: scale(1);
+-o-transform: scale(1);
+transform: scale(1);
+opacity: 1; } }
+
+line {
+   stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  -webkit-animation: dash 2.5s linear forwards;
+  animation: dash 3s linear forwards;
+}
+
+
+.ln1 {
+      -webkit-animation-delay: 0.15s; 
+    animation-delay: 0.15s;
+}
+
+.ln2 {
+      -webkit-animation-delay: 0.25s; 
+    animation-delay: 0.25s;
+}
+
+.ln3 {
+      -webkit-animation-delay: 0.35s; 
+    animation-delay: 0.35s;
+}
+
+.ln4 {
+      -webkit-animation-delay: 0.45s;
+    animation-delay: 0.45s;
+}
+
+.ln5 {
+      -webkit-animation-delay: 0.55s; 
+    animation-delay: 0.55s;
+}
+
+.ln6 {
+      -webkit-animation-delay: 0.6s; 
+    animation-delay: 0.6s;
+}
+
+.ln7 {
+      -webkit-animation-delay: 0.7s; 
+    animation-delay: 0.7s;
+}
+
+
+.ln8 {
+      -webkit-animation-delay: 0.75s; 
+    animation-delay: 0.75s;
+}
+
+.ln9 {
+      -webkit-animation-delay: 0.8s; 
+    animation-delay: 0.8s;
+}
+
+.ln10 {
+      -webkit-animation-delay: 0.9s; 
+    animation-delay: 0.9s;
+}
+
+.ln11 {
+      -webkit-animation-delay: 1.0s; 
+    animation-delay: 1.0s;
+}
+
+.ln12 {
+      -webkit-animation-delay: 1.15s; 
+    animation-delay: 1.15s;
+}
+
+.ln13 {
+      -webkit-animation-delay: 1.25s; 
+    animation-delay: 1.25s;
+}
+
+
+  </style>
+
+</head>
+<body>
+	<div class="pure-g module" style="z-index:-10000;min-height:700px;background-position: left top;width:100%">
+		<div class="pure-u-1 pure-u-md-4-24" style="margin-top:20px"></div>
+		<div class="pure-u-1 pure-u-md-10-24" style="margin-top:20px">
+			<h3 style="color:#fff;font-weight:300;font-family: 'Muli', sans-serif;line-height:10px"><img src="home.png" width="38" height="38" style="margin-top:10px;"><b>Seed</b>Feed</h3>
+
+
+		</div>
+		<div class="pure-g" id="mobile-text" style="margin-top:60px">
+			<div class="pure-u-1 pure-u-md-5-24"></div>
+			<div class="pure-u-1 pure-u-md-14-24">
+				<h1 style="color:#fff;font-weight:200;font-family: 'Muli', sans-serif;"> Investing in Real Estate has never been so easy and affordable.</h1>
+				<h3 style="color:#BFD7F9;font-weight:200;font-family: 'Muli', sans-serif;"> SeedFeed aggregates top crowdfunded real estate investment deals, analzyes them, and helps you choose which ones are right for you.</h3>
+				<br/>
+				<button class="button-xlarge pure-button pure-button-primary" href="#" style="font-weight:300;height:50px;'Muli', sans-serif;">Browse Investments</button>
+			</div>
+		</div>
+	</div>
+
+  <div class="pure-g" style="margin-top:40px">
+    <div class="pure-u-md-1-3">
+    </div>
+    <div class="pure-u-1 pure-u-md-1-3" style="text-align:center;margin-bottom:-20px"><h2 style="font-weight:200;font-family: 'Muli', sans-serif;">How it Works</h2>
+    <h3 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:-10px;color:#757575">Finding, vetting, & investing in three easy steps.</h3></div>
+    </div>
+
+  </div>
+
+  <div class="pure-g" style="margin-top:50px">
+    <div class="pure-u-md-7-24"></div>
+    <div class="pure-u-md-10-24" style="text-align:center">
+      <ul class="three steps">
+      <li class="complete"><a>1</a></li>
+      <li class="complete"><a>2</a></li>
+      <li class="complete"><a>3</a></li>
+    </ul>
+    </div>
+  </div>
+
+  <div class="pure-g">
+    <div class="pure-u-md-5-24"></div>
+    <div class="pure-u-1 pure-u-md-3-24" style="text-align:center;margin-left:25px">
+      <p style="color:#757575;font-size:13px;line-height:20px"><i style="font-size:24px" class="fa fa-search"></i><br/>We aggregate crowdfunded real estate deals from other major platforms so you can find them all in once place.</p style="color:#757575;font-size:13px">
+    </div>
+    <div class="pure-u-1 pure-u-md-2-24" style="text-align:center">
+    </div>
+    <div class="pure-u-1 pure-u-md-3-24" style="text-align:center;">
+      <p style="color:#757575;font-size:13px;line-height:20px"><i style="font-size:24px" class="fa fa-bar-chart"></i><br/>No more guesswork. SeedFeed gives you powerful, simple analysis on each listing to help you make more educated decisions.</p style="color:#757575;font-size:13px"></div>
+    <div class="pure-u-1 pure-u-md-2-24" style="text-align:center">
+    </div>
+    <div class="pure-u-1 pure-u-md-3-24" style="text-align:center">
+      <p style="color:#757575;font-size:13px;line-height:20px"><i style="font-size:24px" class="fa fa-money"></i><br/>Make your investments and watch your principal grow.</p style="color:#757575;font-size:13px"></div>
+    <div class="pure-u-1 pure-u-md-3-24" style="text-align:center">
+    </div>
+  </div>
+
+  <div class="pure-g" style="margin-top:50px;background-color:#EEF2F6;padding-bottom:30px">
+    <div class="pure-u-md-3-24"></div>
+    <div class="pure-u-1 pure-u-md-20-24">
+      <h2 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:40px;margin-bottom:0px">Featured Investments</h2>
+      <div class="listings pure-g" >
+                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
+                    <div class="title">436-442 East 13th Street</div>
+                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
+                        <div class="progress">
+                            $500,000 of $615,000
+                        </div>
+                        <div class="loading-outer">
+                            <div class="loading-inner" style="width: 85%">
+                            &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-g" style="color:#fff">
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-building"></i>
+                            <span class="sub">Mixed Use</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-puzzle-piece"></i>
+                            <span class="sub">Equity</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <span class="icon">12%</span>
+                            <span class="sub">IRR</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <span class="icon">2 Years</span>
+                            <span class="sub">Hold period</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
+                    <div class="title">436-442 East 13th Street</div>
+                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
+                        <div class="progress">
+                            $500,000 of $615,000
+                        </div>
+                        <div class="loading-outer">
+                            <div class="loading-inner" style="width: 85%">
+                            &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="more-info-container pure-g">
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-building"></i>
+                            <span class="sub">Mixed Use</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-puzzle-piece"></i>
+                            <span class="sub">Equity</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="sub">Something</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-thumbs-up"></i>
+                            <span class="sub">Like</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
+                    <div class="title">436-442 East 13th Street</div>
+                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
+                        <div class="progress">
+                            $500,000 of $615,000
+                        </div>
+                        <div class="loading-outer">
+                            <div class="loading-inner" style="width: 85%">
+                            &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="more-info-container pure-g">
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-building"></i>
+                            <span class="sub">Mixed Use</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-puzzle-piece"></i>
+                            <span class="sub">Equity</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="sub">Something</span>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <i class="fa fa-thumbs-up"></i>
+                            <span class="sub">Like</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+    </div>
+      
+ 
+  </div>
+
+  <div class="pure-g" >
+    <div class="pure-u-md-2-24"></div>
+    <div class="pure-u-1 pure-u-md-8-24">
+      <h2 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:50px"> Building wealth with a peace of mind</h2>
+      <h3 style="color:#757575;font-weight:200;font-family: 'Muli', sans-serif;text-align:left"> SeedFeed aggregates top crowdfunded real estate investment deals, analzyes them, and helps you choose which ones are right for you.
+      <br/><br/>If you invest  $ <input placeholder="5,000" type="text" style="border-top:none;border-left:none;border-right:none;width:60px;outline-style:none;font-size:20px" /> today, it could <br/> become $<span id="final_amount"> 20,000</span> in 10 years.&#42
+      <br/>
+
+      <h5 style="color:#757575;font-weight:200;font-family: 'Muli', sans-serif">&#42 annual return based on average REIT yield or some shit
+
+
+      </h3>
+
+
+    </div>
+    <div class="pure-u-md-2-24"></div>
+    <div class="pure-u-1 pure-u-md-12-24">
+        <div id="graph">
+
+          <svg xmlns="http://www.w3.org/2000/svg" begin="animation" viewBox="0 0 1400 600" enable-background="new 0 0 1400 600">
+          <g>
+           <line class="ln1" x1="100" y1="0" x2="100" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln2" x1="200" y1="0" x2="200" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln3" x1="300" y1="0" x2="300" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln4" x1="400" y1="0" x2="400" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln5" x1="500" y1="0" x2="500" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln6" x1="600" y1="0" x2="600" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln7" x1="700" y1="0" x2="700" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln8" x1="800" y1="0" x2="800" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln9" x1="900" y1="0" x2="900" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln10" x1="1000" y1="0" x2="1000" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln11" x1="1100" y1="0" x2="1100" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln12" x1="1200" y1="0" x2="1200" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           <line class="ln13" x1="1300" y1="0" x2="1300" y2="100%" stroke-width="1" stroke="#1c70f0"/>
+           </g>
+        
+            <polyline class="animation-draw" begin="indefinite" fill="none" stroke="#004dc1" stroke-miterlimit="10"stroke-width="5" points="8,616.5 210.8,380.3 410.8,358.8 610.7,256.8 810.2,227.2 
+              1010.2,147.3 1209,127 1407.9,13.7 "/>
+              
+            <circle cx="1250px" cy="105px" r="20" class="animation-target wht5" fill="#ff352b" stroke-width="10"
+                       style="stroke: #0260ee;"/>
+            </circle>
+              
+              
+              
+            <circle cx="400px" cy="360px" r="15" class="animation-target wht1" fill="#fff" stroke-width="10"
+                       style="stroke: #0260ee;"/>
+            </circle>
+              
+              
+              
+            <circle  cx="210px" cy="385px" r="15" class="animation-target wht0" fill="#fff" stroke-width="10"
+                     style="stroke: #0260ee;"/>
+            </circle>
+              
+
+            <circle cx="620px" cy="255px" r="15" class="animation-target wht2" fill="#fff" stroke-width="10"
+                       style="stroke: #0260ee;"/>
+            </circle>
+              
+              
+            <circle cx="810px" cy="225px" r="15" class="animation-target wht3" fill="#fff" stroke-width="10"
+                       style="stroke: #0260ee;"/>
+            </circle>
+              
+              
+            <circle cx="1020px" cy="146px" r="15" class="animation-target wht4" fill="#fff" stroke-width="10"
+                       style="stroke: #0260ee;"/>
+            </circle>
+            </svg>
+  </div>
+    </div>
+      
+ 
+  </div>
+
+  <div class="pure-g" style=";background-color:#EEF2F6;padding-bottom:30px">
+
+  </div>
+
+
+
+
+  
+
+<script type="text/javascript">
+    window.onscroll = function(){
+      var anime= document.getElementsByTagName('animate')[0];
+      // check for the amount of scroll
+      anime.beginElement();
+    }
+</script>
+	
+</body>
+</html>

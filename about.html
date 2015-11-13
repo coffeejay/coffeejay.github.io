@@ -189,13 +189,10 @@
         border-radius: 5px;
     }
     .module {
-      background: 
-        linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.2)
-        ),
-        url(http://www.edgewoodpizzao4w.com/wp-content/uploads/2013/06/atlanta-georgia-usa-world_130834.jpg);
+      background: linear-gradient( 120deg, 
+        rgba(41, 30, 141, 0.3), 
+        rgba(98, 88, 155, 0.3) ), 
+      url(http://www.edgewoodpizzao4w.com/wp-content/uploads/2013/06/atlanta-georgia-usa-world_130834.jpg);
       position: relative;
       overflow: hidden;
       background-size: cover;
@@ -770,61 +767,204 @@ line {
     animation-delay: 1.25s;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+@keyframes bake-pie {
+  from {
+    transform: rotate(0deg) translate3d(0,0,0);
+  }
+}
+
+
+main {
+  width: 400px;
+  margin: 30px auto;
+}
+section {
+  margin-top: 30px;
+}
+.pieID {
+  display: inline-block;
+  vertical-align: top;
+}
+.pie {
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin: 0 30px 30px 0;
+}
+.pie::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  background: #EEE;
+  border-radius: 50%;
+  top: 50px;
+  left: 50px;
+}
+.pie::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 3px 4px rgba(0,0,0,0.1);
+  margin: 220px auto;
+  
+}
+.slice {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  clip: rect(0px, 200px, 200px, 100px);
+  animation: bake-pie 1s;
+}
+.slice span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  clip: rect(0px, 200px, 200px, 100px);
+}
+.legend {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #FFF;
+  padding: 15px;
+  font-size: 13px;
+  box-shadow: 1px 1px 0 #DDD,
+              2px 2px 0 #BBB;
+}
+.legend li {
+  width: 110px;
+  height: 1.25em;
+  margin-bottom: 0.7em;
+  padding-left: 0.5em;
+  border-left: 1.25em solid black;
+}
+.legend em {
+  font-style: normal;
+}
+.legend span {
+  float: right;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 13px;
+  background: #DDD;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(adam.jpg) no-repeat;
+  }
+
+.circular2 {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(https://media.licdn.com/media/AAEAAQAAAAAAAAINAAAAJDA1MzZkODk2LTEzZTItNDM0NS05ZjAxLTZjOTViZThlZjQ2MA.jpg) no-repeat;
+  }
+
+.circular3 {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(chintan.jpg) no-repeat;
+  }
+
+.circular4 {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(avi.jpg) no-repeat;
+  }
+
+.circular5 {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  background: url(jeff.jpg) no-repeat;
+  }
+
+
+
+
 
   </style>
 
 </head>
 <body>
-  <div class="pure-g module" style="min-height:700px;background-position: left top;width:100%">
-    <div class="pure-u-1 pure-u-md-4-24" style="margin-top:70px"></div>
+  <div class="pure-g module" style="z-index:-10000;min-height:200px;background-position: left top;width:100%">
+    <div class="pure-u-md-4-24" style="margin-top:70px"></div>
     <div class="pure-u-1 pure-u-md-14-24" style="margin-top:20px">
       <h3 style="color:#fff;font-weight:300;font-family: 'Muli', sans-serif;line-height:-5px"><img src="home.png" width="38" height="38" style="margin-top:0px;"><b>Seed</b>Feed</h3>
     </div>
-    <div class="pure-u-md-4-24" style="margin-top:60px">
-      <a href="about.html" style="color:#fff;text-decoration:none;font-family: 'Arial', sans-serif;font-size:14px;opacity:0.9">About</a>
-      <a href="about.html" style="margin-left:20px;color:#fff;text-decoration:none;font-family: 'Arial', sans-serif;font-size:14px;opacity:0.9"> Contact</a>
-    </div>
-    <div class="pure-g" id="mobile-text" style="margin-top:80px">
-      <div class="pure-u-1 pure-u-md-4-24"></div>
-      <div class="pure-u-1 pure-u-md-14-24">
-        <div style="position:relative;top: 50%;transform: translateY(10%);">
-          <h1 style="color:#fff;font-weight:200;font-family: 'Muli', sans-serif;"> With hundreds of places to look where do you find the best crowdfunded real estate investments?</h1>
-          <h3 style="color:#BFD7F9;font-weight:200;font-family: 'Muli', sans-serif;"> SeedFeed aggregates top crowdfunded real estate investment deals<br/> with intuitive data so you can choose which investments are right for you.</h3>
-          <br/>
-          <button class="button-xlarge pure-button pure-button-primary" href="#" style="font-weight:300;height:50px;'Muli', sans-serif;">Browse Investments</button>
-        </div>
+    <div class="pure-u-md-6-24"></div>
+
+    <div class="pure-u-md-3-24"></div>
+    <div class="pure-u-1 pure-u-md-19-24" style="text-align:center;margin-top:50px">
+      <div style="position:relative;top: 20%;transform: translateY(-20%);">
+        <h1 style="color:#fff;font-weight:200;font-family: 'Muli', sans-serif;"> Finding your next real estate investment just became easy.</h1>
+        <h3 style="color:#BFD7F9;font-weight:200;font-family: 'Muli', sans-serif;"> We're making it simple to find and research your next real estate investment.</h3>
+        <br/>
       </div>
     </div>
   </div>
 
-  <div class="pure-g" style="margin-top:40px">
-    <div class="pure-u-md-8-24">
-    </div>
-    
-    <div class="pure-u-1 pure-u-md-8-24" style="text-align:center;margin-bottom:-20px"><h2 style="font-weight:200;font-family: 'Muli', sans-serif;font-size:28px">How it works</h2>
-      <h3 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:-10px;color:#757575">Finding, researching, & investing in three easy steps.</h3>
+  <div class="pure-g" style="margin-top:60px">
+
+    <div class="pure-u-md-6-24"></div>
+    <div class="pure-u-1 pure-u-md-12-24" style="text-align:center">
+      <h3 style="color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Since the JOBS act was passed in 2012, it has become possible for real estate developers to raise funds from individual investors. </h3>
+      
       <div class="pure-g" style="margin-top:50px">
         <div class="pure-u-1 pure-u-md-6-24">
-          <i class="fa fa-search" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
+          <i class="fa fa-building-o" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
         </div>
 
         <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
 
-          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Find the right investment for you </h3>
-          <h2 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> We aggregate real estate crowdfunding investments from other major platforms so you can find them all in one easily searchable place. </h2>
+          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Developers looking to raise capital </h3>
+          <h2 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> Real estate companies can raise capital from accredited investors to fund their projects and offer either equity or debt deals. </h2>
 
         </div>
       </div>
 
       <div class="pure-g" style="margin-top:50px">
         <div class="pure-u-1 pure-u-md-6-24">
-          <i class="fa fa-bar-chart" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
+          <i class="fa fa-users" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
         </div>
 
         <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
 
-          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> No more guesswork </h3>
-          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> SeedFeed gives you powerful, unbiased information on trends, sectors, and companies based on third party data and insights. </h3>
+          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Accredited investors can invest in real estate </h3>
+          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> Since investments are crowdfunded, minimums can be as low as $5,000 making real estate much more accessible to indivduals. </h3>
 
         </div>
       </div>
@@ -837,205 +977,101 @@ line {
         <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
 
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Watch your investments grow </h3>
-          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> SeedFeed then directs you to the proper platform to make your investments and watch your principal grow. </h3>
+          <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> Distributions can be paid out quarterly or annually, with anual returns anywhere from 7-14%. </h3>
 
         </div>
       </div>
-
-      <div class="pure-g" style="margin-top:40px">
-        <div class="pure-u-md-1-3">
-        </div>
-
-        <div class="pure-u-1 pure-u-md-1-3">
-          <a href="about.html" style="text-decoration:none"><h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;text-transform:uppercase"> Learn more > </h3></a>
-        </div>
-
-      </div>
-
-
-
     </div>
+    <div class="pure-u-md-6-24"></div>
+
   </div>
+
+
+
+  
+
+  <div class="pure-g" style="margin-top:50px;background-color:#EEF2F6;padding-top:70px;padding-bottom:50px">
+
+    <div class="pure-u-md-4-24"></div>
+
+    <div class="pure-u-1 pure-u-md-9-24">
+      <h2 style="font-weight: 400;font-family: 'Muli', sans-serif;margin-top: 40px;margin-bottom: 0px;font-size: 18px;color: #595D63;text-transform: uppercase;">Build a portfolio of high, steady returns</h2>
+      <h3 style="color:#757575;font-weight:200;font-family: 'Muli', sans-serif;text-align:left">
+       Access real estate investments and earn 12-14% average returns. With minimums as low as $5,000, building a diversified real estate portfolio that fits your goals has never been easier.</h3>
+    </div>
+    <div class="pure-u-md-2-24"></div>
+    <div class="pure-u-1 pure-u-md-8-24" >
+      <div class="pieID pie">
+      
+    </div>
+    <ul class="pieID legend">
+      <li>
+        <em>Commercial</em>
+        <span style="display:none">422</span>
+      </li>
+      <li>
+        <em>Residential</em>
+        <span style="display:none">531</span>
+      </li>
+      <li>
+        <em>Mixed-Use</em>
+        <span style="display:none">868</span>
+      </li>
+    </ul>
+    </div>
+
+  </div>
+
+
+  <div class="pure-g" style="margin-top:60px;padding-bottom:60px">
+    <div class="pure-u-md-1-3"></div>
+    <div class="pure-u-md-1-3" style="text-align:center">
+      <h3 style="color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Our team is commited to making real estate investing simple for everyone </h3>
+    </div>
+    <div class="pure-u-md-1-3"></div>
+      
+    <div class="pure-u-md-5-24"></div>
+
+    <div class="pure-u-md-3-24" style="margin-top:20px;text-align:center">
+      <div class="circular2">
+      </div>
+      <p style="margin-left:-30px;;color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Jay Deuskar </p>
+    </div>
+
+    <div class="pure-u-md-3-24" style="margin-top:20px;text-align:center">
+      <div class="circular3">
+      </div>
+      <p style="margin-left:-30px;color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Chintan Parikh </p>
+    </div>
+
+    <div class="pure-u-md-3-24" style="margin-top:20px;text-align:center">
+      <div class="circular">
+      </div>
+      <p style="margin-left:-30px;color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Adam Kunz </p>
+    </div>
+    <div class="pure-u-md-3-24" style="margin-top:20px;text-align:center">
+      <div class="circular4">
+      </div>
+      <p style="margin-left:-30px;color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Avi Savar </p>
+    </div>
+    <div class="pure-u-md-3-24" style="margin-top:20px;text-align:center">
+      <div class="circular5">
+      </div>
+      <p style="margin-left:-30px;color:#484848;font-weight:200;font-family: 'Muli', sans-serif;"> Jeff Frumin</p>
+    </div>
+
+    <div class="pure-u-md-8-24">
+      
+    </div>
+
+  </div>
+
+
 
   </div>
 
   
 
-  <div class="pure-g" style="margin-top:50px;background-color:#EEF2F6;padding-bottom:30px">
-    <div class="pure-u-md-3-24"></div>
-    <div class="pure-u-1 pure-u-md-20-24">
-      <h2 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:40px;margin-bottom:0px">Featured Investments</h2>
-      <div class="listings pure-g" >
-                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
-                    <div class="title">436-442 East 13th Street</div>
-                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
-                        <div class="progress">
-                            $500,000 of $615,000
-                        </div>
-                        <div class="loading-outer">
-                            <div class="loading-inner" style="width: 85%">
-                            &nbsp;
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pure-g" style="color:#fff">
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-building"></i>
-                            <span class="sub">Mixed Use</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-puzzle-piece"></i>
-                            <span class="sub">Equity</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <span class="icon">12%</span>
-                            <span class="sub">IRR</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <span class="icon">2 Years</span>
-                            <span class="sub">Hold period</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
-                    <div class="title">436-442 East 13th Street</div>
-                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
-                        <div class="progress">
-                            $500,000 of $615,000
-                        </div>
-                        <div class="loading-outer">
-                            <div class="loading-inner" style="width: 85%">
-                            &nbsp;
-                            </div>
-                        </div>
-                    </div>
-                    <div class="more-info-container pure-g">
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-building"></i>
-                            <span class="sub">Mixed Use</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-puzzle-piece"></i>
-                            <span class="sub">Equity</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-line-chart"></i>
-                            <span class="sub">Something</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-thumbs-up"></i>
-                            <span class="sub">Like</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pure-u-1 pure-sm-1-2 pure-u-md-7-24 listing">
-                    <div class="title">436-442 East 13th Street</div>
-                    <div class="image" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('http://therealdeal.com/wp-content/uploads/2013/10/12East13thst1.jpg'); background-size: 100%;">
-                        <div class="progress">
-                            $500,000 of $615,000
-                        </div>
-                        <div class="loading-outer">
-                            <div class="loading-inner" style="width: 85%">
-                            &nbsp;
-                            </div>
-                        </div>
-                    </div>
-                    <div class="more-info-container pure-g">
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-building"></i>
-                            <span class="sub">Mixed Use</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-puzzle-piece"></i>
-                            <span class="sub">Equity</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-line-chart"></i>
-                            <span class="sub">Something</span>
-                        </div>
-                        <div class="pure-u-1-4">
-                            <i class="fa fa-thumbs-up"></i>
-                            <span class="sub">Like</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-    </div>
-      
- 
-  </div>
-
-  <div class="pure-g" >
-    <div class="pure-u-md-3-24"></div>
-    <div class="pure-u-1 pure-u-md-8-24">
-      <h2 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:50px"> Build wealth with a peace of mind</h2>
-      <h3 style="color:#757575;font-weight:200;font-family: 'Muli', sans-serif;text-align:left">
-      Modern investors don't have the time to scour through hundreds of platforms, much less research the thousands of deals to find the right investment. <br/><br/>Find your next investment now with SeedFeed.</h3>
-
-      <button class="button-xlarge pure-button pure-button-primary" href="#" style="font-weight:300;height:50px;'Muli', sans-serif;">Browse Investments</button>
-
-      <br/><br/>
-
-
-    </div>
-    <div class="pure-u-md-1-24"></div>
-    <div class="pure-u-1 pure-u-md-12-24">
-        <div id="graph">
-
-          <svg xmlns="http://www.w3.org/2000/svg" begin="animation" viewBox="0 0 1400 600" enable-background="new 0 0 1400 600">
-          <g>
-           <line class="ln1" x1="100" y1="0" x2="100" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln2" x1="200" y1="0" x2="200" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln3" x1="300" y1="0" x2="300" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln4" x1="400" y1="0" x2="400" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln5" x1="500" y1="0" x2="500" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln6" x1="600" y1="0" x2="600" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln7" x1="700" y1="0" x2="700" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln8" x1="800" y1="0" x2="800" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln9" x1="900" y1="0" x2="900" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln10" x1="1000" y1="0" x2="1000" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln11" x1="1100" y1="0" x2="1100" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln12" x1="1200" y1="0" x2="1200" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           <line class="ln13" x1="1300" y1="0" x2="1300" y2="100%" stroke-width="1" stroke="#1c70f0"/>
-           </g>
-        
-            <polyline class="animation-draw" begin="indefinite" fill="none" stroke="#004dc1" stroke-miterlimit="10"stroke-width="5" points="8,616.5 210.8,380.3 410.8,358.8 610.7,256.8 810.2,227.2 
-              1010.2,147.3 1209,127 1407.9,13.7 "/>
-              
-            <circle cx="1250px" cy="105px" r="20" class="animation-target wht5" fill="#ff352b" stroke-width="10"
-                       style="stroke: #0260ee;"/>
-            </circle>
-              
-              
-              
-            <circle cx="400px" cy="360px" r="15" class="animation-target wht1" fill="#fff" stroke-width="10"
-                       style="stroke: #0260ee;"/>
-            </circle>
-              
-              
-              
-            <circle  cx="210px" cy="385px" r="15" class="animation-target wht0" fill="#fff" stroke-width="10"
-                     style="stroke: #0260ee;"/>
-            </circle>
-              
-
-            <circle cx="620px" cy="255px" r="15" class="animation-target wht2" fill="#fff" stroke-width="10"
-                       style="stroke: #0260ee;"/>
-            </circle>
-              
-              
-            <circle cx="810px" cy="225px" r="15" class="animation-target wht3" fill="#fff" stroke-width="10"
-                       style="stroke: #0260ee;"/>
-            </circle>
-              
-              
-            <circle cx="1020px" cy="146px" r="15" class="animation-target wht4" fill="#fff" stroke-width="10"
-                       style="stroke: #0260ee;"/>
-            </circle>
-            </svg>
-  </div>
-    </div>
       
  
   </div>
@@ -1047,7 +1083,7 @@ line {
       <br/>
       <div style="margin-left:50px">
         <a href="#" style="color:#7F8184;text-decoration:none;font-size:14px">Blog</a><br/><br/>
-        <a href="about.html" style="color:#7F8184;text-decoration:none;font-size:14px">About</a><br/><br/>
+        <a href="#" style="color:#7F8184;text-decoration:none;font-size:14px">About</a><br/><br/>
         <a href="#" style="color:#7F8184;text-decoration:none;font-size:14px">Privacy Policy</a><br/><br/>
       </div>
     </div>
@@ -1060,7 +1096,62 @@ line {
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('.module').fadeIn();
+    function sliceSize(dataNum, dataTotal) {
+  return (dataNum / dataTotal) * 360;
+}
+function addSlice(sliceSize, pieElement, offset, sliceID, color) {
+  $(pieElement).append("<div class='slice "+sliceID+"'><span></span></div>");
+  var offset = offset - 1;
+  var sizeRotation = -179 + sliceSize;
+  $("."+sliceID).css({
+    "transform": "rotate("+offset+"deg) translate3d(0,0,0)"
+  });
+  $("."+sliceID+" span").css({
+    "transform"       : "rotate("+sizeRotation+"deg) translate3d(0,0,0)",
+    "background-color": color
+  });
+}
+function iterateSlices(sliceSize, pieElement, offset, dataCount, sliceCount, color) {
+  var sliceID = "s"+dataCount+"-"+sliceCount;
+  var maxSize = 179;
+  if(sliceSize<=maxSize) {
+    addSlice(sliceSize, pieElement, offset, sliceID, color);
+  } else {
+    addSlice(maxSize, pieElement, offset, sliceID, color);
+    iterateSlices(sliceSize-maxSize, pieElement, offset+maxSize, dataCount, sliceCount+1, color);
+  }
+}
+function createPie(dataElement, pieElement) {
+  var listData = [];
+  $(dataElement+" span").each(function() {
+    listData.push(Number($(this).html()));
+  });
+  var listTotal = 0;
+  for(var i=0; i<listData.length; i++) {
+    listTotal += listData[i];
+  }
+  var offset = 0;
+  var color = [
+    "cornflowerblue", 
+    "olivedrab", 
+    "orange", 
+    "tomato", 
+    "crimson", 
+    "purple", 
+    "turquoise", 
+    "forestgreen", 
+    "navy", 
+    "gray"
+  ];
+  for(var i=0; i<listData.length; i++) {
+    var size = sliceSize(listData[i], listTotal);
+    iterateSlices(size, pieElement, offset, i, 0, color[i]);
+    $(dataElement+" li:nth-child("+(i+1)+")").css("border-color", color[i]);
+    offset += size;
+  }
+}
+createPie(".pieID.legend", ".pieID.pie");
+
   });
 </script>
   

@@ -39,6 +39,7 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>  
   <style>
+
     
     html, body {
       height: 100%;
@@ -413,166 +414,57 @@ progress {
   margin-top: 200px;
   
 }
+@media screen and (max-width: 480px) {
 
+   #logo{
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 60px;
+  }
 
-*, *:before, *:after {
-  box-sizing: border-box;
+  #links{
+    margin-left: 20px;
+    margin-top: 0px;
+    display: none;
+  }
+
+  #text-center{
+  position:relative;
+  top: 10%;
+  transform: translateY(10%);
+  margin-top: -250px;
+  }
+  
+  #mobile-text{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .desc-icon{
+    margin-bottom: 40px;
+  }
+
+  #desc-content{
+    text-align: center;
+  }
 }
 
-.steps {
-  background-color: #fff;
-  border-color: #cad5df;
-  border-style: solid;
-  border-width: 1px 0;
-  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
-  display: block;
-  height: 10px;
-  list-style-type: none;
-  margin: 0 0 30px;
-  padding: 0;
-  width: 100%;
+#links{
+  margin-top: 60px;
 }
 
-.steps > li {
-  float: left;
-  margin: 0;
-  min-height: 1px;
-  padding: 0;
-  position: relative;
+#text-center{
+  position:relative;
+  top: 50%;
+  transform: translateY(50%);
 }
 
-.two.steps > li {
-  width: 100%;
+#logo{
+  margin-top: 20px;
 }
 
-.three.steps > li {
-  width: 50%;
-}
-
-.four.steps > li {
-  width: 33.33333%;
-}
-
-.five.steps > li {
-  width: 25%;
-}
-
-.six.steps > li {
-  width: 20%;
-}
-
-.seven.steps > li {
-  width: 16.66667%;
-}
-
-.eight.steps > li {
-  width: 14.28571%;
-}
-
-.nine.steps > li {
-  width: 12.5%;
-}
-
-.ten.steps > li {
-  width: 11.11111%;
-}
-
-.steps > li:first-child {
-  width: 0;
-}
-
-.steps > li > a {
-  background-color: #fff;
-  border: 1px solid #cad5df;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
-  color: #b2b9bf;
-  display: block;
-  font-size: 15px;
-  font-weight: bold;
-  height: 30px;
-  right: -10px;
-  line-height: 28px;
-  position: absolute;
-  text-align: center;
-  text-decoration: none;
-  top: -11px;
-  width: 30px;
-}
-
-.steps > li > a:hover {
-  background-color: #eee;
-  background-image: linear, to bottom, #eeeeee, #dddddd;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  color: #777b80;
-}
-
-.steps > li > a:before,
-.steps > li > a:after {
-  background-color: #fff;
-  box-shadow: 0 1px 2px rgba(213, 222, 229, 0.5) inset;
-  content: "";
-  display: block;
-  height: 6px;
-  height: 8px;
-  position: absolute;
-  top: 7px;
-  top: 10px;
-  width: 4px;
-}
-
-.steps > li > a:before {
-  left: -2px;
-}
-
-.steps > li > a:after {
-  right: -2px;
-}
-
-.steps > li > a:hover:before {
-  left: -5px;
-}
-
-.steps > li > a:hover:after {
-  right: -5px;
-}
-
-.steps > li:first-child > a:before {
-  display: none;
-}
-
-.steps > li:last-child > a:after {
-  display: none;
-}
-
-.steps > .complete > a,
-.steps > .complete > a:hover {
-  background-color: #339aff;
-  background-image: linear, to bottom, #339aff, #2894ff;
-  border-color: #1a80e5;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  color: #fff;
-}
-
-.steps > .complete > a:before,
-.steps > .complete > a:after {
-  display: none;
-}
-
-.steps > .complete + .complete:before {
-  background-color: #339aff;
-  background-image: linear, to bottom, #339aff, #2894ff;
-  border-color: #1a80e5;
-  border-style: solid;
-  border-width: 1px 0;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  content: "";
-  height: 10px;
-  position: absolute;
-  left: 8px;
-  top: -1px;
-  width: calc(100% - 26px);
-  z-index: 2;
+#desc-content{
+  margin-top:-20px;
+  text-align: left;
 }
 
 
@@ -771,23 +663,25 @@ line {
 }
 
 
+
+
   </style>
 
 </head>
 <body>
   <div class="pure-g module" style="min-height:700px;background-position: left top;width:100%">
-    <div class="pure-u-1 pure-u-md-4-24" style="margin-top:70px"></div>
-    <div class="pure-u-1 pure-u-md-14-24" style="margin-top:20px">
+    <div class="pure-u-md-4-24"></div>
+    <div class="pure-u-1 pure-u-md-14-24" id="logo">
       <h3 style="color:#fff;font-weight:300;font-family: 'Muli', sans-serif;line-height:-5px"><img src="home.png" width="38" height="38" style="margin-top:0px;"><b>Seed</b>Feed</h3>
     </div>
-    <div class="pure-u-md-4-24" style="margin-top:60px">
+    <div class="pure-u-1 pure-u-md-4-24" id="links">
       <a href="about.html" style="color:#fff;text-decoration:none;font-family: 'Arial', sans-serif;font-size:14px;opacity:0.9">About</a>
       <a href="about.html" style="margin-left:20px;color:#fff;text-decoration:none;font-family: 'Arial', sans-serif;font-size:14px;opacity:0.9"> Contact</a>
     </div>
-    <div class="pure-g" id="mobile-text" style="margin-top:80px">
+    <div class="pure-g" id="mobile-text">
       <div class="pure-u-1 pure-u-md-4-24"></div>
       <div class="pure-u-1 pure-u-md-14-24">
-        <div style="position:relative;top: 50%;transform: translateY(10%);">
+        <div id="text-center">
           <h1 style="color:#fff;font-weight:200;font-family: 'Muli', sans-serif;"> With hundreds of places to look where do you find the best crowdfunded real estate investments?</h1>
           <h3 style="color:#BFD7F9;font-weight:200;font-family: 'Muli', sans-serif;"> SeedFeed aggregates top crowdfunded real estate investment deals<br/> with intuitive data so you can choose which investments are right for you.</h3>
           <br/>
@@ -797,18 +691,18 @@ line {
     </div>
   </div>
 
-  <div class="pure-g" style="margin-top:40px">
+  <div class="pure-g" style="margin-top:40px;text-align:left">
     <div class="pure-u-md-8-24">
     </div>
     
     <div class="pure-u-1 pure-u-md-8-24" style="text-align:center;margin-bottom:-20px"><h2 style="font-weight:200;font-family: 'Muli', sans-serif;font-size:28px">How it works</h2>
       <h3 style="font-weight:200;font-family: 'Muli', sans-serif;margin-top:-10px;color:#757575">Finding, researching, & investing in three easy steps.</h3>
       <div class="pure-g" style="margin-top:50px">
-        <div class="pure-u-1 pure-u-md-6-24">
+        <div class="pure-u-1 pure-u-md-6-24 desc-icon">
           <i class="fa fa-search" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
         </div>
 
-        <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
+        <div class="pure-u-1 pure-u-md-18-24" id="desc-content">
 
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Find the right investment for you </h3>
           <h2 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> We aggregate real estate crowdfunding investments from other major platforms so you can find them all in one easily searchable place. </h2>
@@ -818,10 +712,10 @@ line {
 
       <div class="pure-g" style="margin-top:50px">
         <div class="pure-u-1 pure-u-md-6-24">
-          <i class="fa fa-bar-chart" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
+          <i class="fa fa-bar-chart desc-icon" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
         </div>
 
-        <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
+        <div class="pure-u-1 pure-u-md-18-24" id="desc-content">
 
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> No more guesswork </h3>
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> SeedFeed gives you powerful, unbiased information on trends, sectors, and companies based on third party data and insights. </h3>
@@ -831,10 +725,10 @@ line {
 
       <div class="pure-g" style="margin-top:50px;margin-bottom:20px">
         <div class="pure-u-1 pure-u-md-6-24">
-          <i class="fa fa-money" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
+          <i class="fa fa-money desc-icon" style="font-size:32px;color:#0078e7;position: relative;top: 50%;transform: translateY(100%);"></i>
         </div>
 
-        <div class="pure-u-1 pure-u-md-18-24" style="margin-left:-20px;margin-top:-20px;text-align:left">
+        <div class="pure-u-1 pure-u-md-18-24" id="desc-content">
 
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#000;font-size:18px"> Watch your investments grow </h3>
           <h3 style="font-weight:200;font-family: 'Muli', sans-serif;color:#757575;font-size:17px;margin-top:-5px"> SeedFeed then directs you to the proper platform to make your investments and watch your principal grow. </h3>

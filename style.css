@@ -214,3 +214,16 @@ body {
   color: white;
   background: rgba(0, 0, 0, 0.25);
 }
+
+@media only screen and (max-device-width: 480px) {
+
+   #mobile-text{
+    margin-top: -80px;
+  }
+
+  #links{
+    margin-left: 20px;
+  }
+
+}
+
